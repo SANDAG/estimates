@@ -1,0 +1,12 @@
+# DOCUMENTS #
+#############
+*.pdf
+*.json
+
+# Intermediaries #
+##################
+.ipynb_checkpoints
+
+# SPECIFICS #
+#############
+estimate_generator.bat
