@@ -37,7 +37,7 @@ geo_sql = "SELECT lower(REPLACE(RTRIM(mgra.geozone), ' ', '%20')), ds.yr, ds.dat
 cur.execute(geo_sql)
 
 for row in cur:
-    url = 'http://pila:8080/ReportServer?%2fTesting+Reports%2fCDAN%2fEstimates%2fEstimate+Profile_sr13_sql2014a8&GEOTYPE={0}&GEOZONE={1}&DATASOURCE_ID={2}&rs:Format=PDF'.format(geotype, row[0], row[2])
+    url = 'http://sql2014a8/ReportServer?%2festimates%2fEstimate+Profile_sr13_sql2014a8&GEOTYPE={0}&GEOZONE={1}&DATASOURCE_ID={2}&rs:Format=PDF'.format(geotype, row[0], row[2])
     
     print url
     

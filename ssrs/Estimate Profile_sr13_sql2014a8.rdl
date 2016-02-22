@@ -6,9 +6,9 @@
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
         <ConnectString>Data Source=sql2014a8;Initial Catalog=demographic_warehouse</ConnectString>
-        <Prompt>Specify a user name and password for data source sql2014a8:</Prompt>
+        <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:SecurityType>DataBase</rd:SecurityType>
+      <rd:SecurityType>Integrated</rd:SecurityType>
       <rd:DataSourceID>0b563eef-d56a-4fb1-9117-0ed222126a94</rd:DataSourceID>
     </DataSource>
   </DataSources>
@@ -12028,7 +12028,7 @@ Female</Value>
                               </Style>
                             </Textbox>
                             <Subreport Name="income_chart_subreport">
-                              <ReportName>/Testing Reports/CDAN/Estimates/income_chart_sr13_sql2014a8</ReportName>
+                              <ReportName>/estimates/income_chart_sr13_sql2014a8</ReportName>
                               <Parameters>
                                 <Parameter Name="DATASOURCE_ID">
                                   <Value>=Parameters!DATASOURCE_ID.Value</Value>
@@ -12052,7 +12052,7 @@ Female</Value>
                               </Style>
                             </Subreport>
                             <Subreport Name="age_chart_subreport">
-                              <ReportName>/Testing Reports/CDAN/Estimates/age_chart_sr13_sql2014a8</ReportName>
+                              <ReportName>/estimates/age_chart_sr13_sql2014a8</ReportName>
                               <Parameters>
                                 <Parameter Name="DATASOURCE_ID">
                                   <Value>=Parameters!DATASOURCE_ID.Value</Value>
@@ -13278,7 +13278,7 @@ Female</Value>
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Sum(Fields!income_median_1999.Value)</Value>
+                                      <Value>=Sum(Fields!inc_median.Value)</Value>
                                       <Style>
                                         <FontFamily>Frutiger 55 Roman</FontFamily>
                                         <FontSize>8pt</FontSize>
@@ -13337,7 +13337,7 @@ Female</Value>
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=IIF(Fields!yr.Value mod 10 &lt;= 1, "" , ROUND(Sum(Fields!income_median_1999.Value) * Max(Fields!cpi_factor.Value)))</Value>
+                                      <Value>=IIF(Fields!yr.Value mod 10 &lt;= 1, "" , ROUND(Sum(Fields!inc_median.Value) * Max(Fields!cpi_factor.Value)))</Value>
                                       <Style>
                                         <FontFamily>Frutiger 55 Roman</FontFamily>
                                         <FontSize>8pt</FontSize>
@@ -13725,6 +13725,6 @@ VILfkHEAerSvbDjhMVqcEqSy4dLtGD7DfjLblmPfDTL/nSYj3GfPH/dnnw16zJj7zo7bc2Dxx+JQzn0n
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportServerUrl>http://pila:8080/ReportServer</rd:ReportServerUrl>
+  <rd:ReportServerUrl>http://sql2014a8/ReportServer</rd:ReportServerUrl>
   <rd:ReportID>50fded65-9d09-48e4-9a61-ec94bff41323</rd:ReportID>
 </Report>
