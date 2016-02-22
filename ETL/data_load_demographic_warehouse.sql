@@ -9,7 +9,7 @@ SELECT
   ,age.age_group_id
   ,CASE SUBSTRING(cohort, 4,1)
     WHEN 'f' THEN 1
-	ELSE 2
+    ELSE 2
   END as sex_id
   ,ethnicity as ethnicity_id
   ,pop as population
@@ -57,7 +57,7 @@ FROM
       ,[popf_75to79]
       ,[popf_80to84]
       ,[popf_85plus]
-  FROM [concep_test].[concep].[detailed_pop_tab_mgra]
+  FROM [estimates].[concep].[detailed_pop_tab_mgra]
   WHERE ethnicity <> 0) upvt
   UNPIVOT (pop for cohort IN ([popm_0to4]
       ,[popm_5to9]
@@ -186,7 +186,7 @@ FROM
   ,[i8]
   ,[i9]
   ,[i10]
-  FROM [concep_test].[concep].[income_estimates_mgra] i
+  FROM [estimates].[concep].[income_estimates_mgra] i
   JOIN (SELECT datasource_id, yr FROM demographic_warehouse.dim.datasource WHERE vintage = 2015 and datasource_type_id = 2) ds ON i.estimates_year = ds.yr) unpvt
   UNPIVOT (households for inc_group IN ([i1],[i2],[i3],[i4],[i5],[i6],[i7],[i8],[i9],[i10])) inc
 
@@ -213,9 +213,9 @@ FROM
   ,mgra_id
   ,CASE structure_type
     WHEN 'hs_sf' THEN 1
-	WHEN 'hs_sfmu' THEN  2
-	WHEN 'hs_mf' THEN 3
-	ELSE 4
+    WHEN 'hs_sfmu' THEN  2
+    WHEN 'hs_mf' THEN 3
+    ELSE 4
   END structure_type_id
   ,units
 FROM
@@ -227,7 +227,7 @@ FROM
       ,[hs_sfmu]
       ,[hs_mf]
       ,[hs_mh]
-  FROM [concep_test].[concep].[popest_mgra] popest
+  FROM [estimates].[concep].[popest_mgra] popest
   JOIN (SELECT datasource_id, yr FROM demographic_warehouse.dim.datasource WHERE vintage = 2015 and datasource_type_id = 2) ds ON popest.estimates_year = ds.yr) unpvt
   UNPIVOT (units for structure_type in ([hs_sf],[hs_sfmu],[hs_mf],[hs_mh])) hs) hs
 JOIN
@@ -238,9 +238,9 @@ SELECT
   ,mgra_id
   ,CASE structure_type
     WHEN 'hh_sf' THEN 1
-	WHEN 'hh_sfmu' THEN  2
-	WHEN 'hh_mf' THEN 3
-	ELSE 4
+    WHEN 'hh_sfmu' THEN  2
+    WHEN 'hh_mf' THEN 3
+    ELSE 4
   END structure_type_id
   ,hh
 FROM
@@ -252,7 +252,7 @@ FROM
   ,[hh_sfmu]
   ,[hh_mf]
   ,[hh_mh]
-  FROM [concep_test].[concep].[popest_mgra] popest
+  FROM [estimates].[concep].[popest_mgra] popest
   JOIN (SELECT datasource_id, yr FROM demographic_warehouse.dim.datasource WHERE vintage = 2015 and datasource_type_id = 2) ds ON popest.estimates_year = ds.yr) unpvt
   UNPIVOT (hh for structure_type in ([hh_sf],[hh_sfmu],[hh_mf],[hh_mh])) hh) hh ON hs.datasource_id = hh.datasource_id AND hs.mgra_id = hh.mgra_id AND hs.structure_type_id = hh.structure_type_id
 
@@ -266,9 +266,9 @@ SELECT
   ,mgra_id
   ,CASE housing_type
     WHEN 'hhp' THEN 1
-	WHEN 'gq_mil' THEN 2
-	WHEN 'gq_civ_college' THEN 3
-	WHEN 'gq_civ_other' THEN 4
+    WHEN 'gq_mil' THEN 2
+    WHEN 'gq_civ_college' THEN 3
+    WHEN 'gq_civ_other' THEN 4
   END as housing_type_id
   ,pop
 FROM
@@ -280,6 +280,6 @@ FROM
   ,popest.gq_mil
   ,popest.gq_civ_college
   ,popest.gq_civ_other
-FROM concep_test.concep.popest_mgra popest
+FROM estimates.concep.popest_mgra popest
 JOIN (SELECT datasource_id, yr FROM demographic_warehouse.dim.datasource WHERE vintage = 2015 and datasource_type_id = 2) ds ON popest.estimates_year = ds.yr) unpvt
 UNPIVOT (pop FOR housing_type IN (hhp,gq_mil,gq_civ_college,gq_civ_other)) pop
