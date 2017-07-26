@@ -2,6 +2,8 @@
 #############
 *.pdf
 *.json
+*.csv
+*.xlsx
 
 # Intermediaries #
 ##################
@@ -10,3 +12,5 @@
 # SPECIFICS #
 #############
 estimate_generator.bat
+demographic_warehouse_cube/
+db.yml
